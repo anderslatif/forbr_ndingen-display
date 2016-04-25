@@ -1,7 +1,4 @@
-import javafx.animation.FadeTransition;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -29,7 +26,7 @@ public class Main extends Application {
 
         createPresentation();
 
-        Timeline timeline = new Timeline();
+/*        Timeline timeline = new Timeline();
         timeline.setCycleCount(5);
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.setAutoReverse(true);
@@ -49,16 +46,30 @@ public class Main extends Application {
 
         }
 
-
         timeline.play();
+        */
 
 
+/*        new AnimationTimer(){
+            @Override
+            public void handle(long delay){
 
+                for(ImageView slide : slides){
+
+                  borderPane.setCenter(slide);
+
+                    for(int i = 0; i < 999999999; i++);{}
+                }
+            }
+        }.start();*/
+
+
+        borderPane.setCenter(slides.get(0));
 
 
 
 //        borderPane.setOnMouseClicked( e -> primaryStage.close());
-//        primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -69,22 +80,30 @@ public class Main extends Application {
 
 
 
-    ArrayList<Image> slides = new ArrayList<>();
+    ArrayList<ImageView> slides = new ArrayList<>();
 
 
     public void createPresentation(){
 
         Image image1 = new Image("1.png");
-        slides.add(image1);
+        ImageView imageView1 = new ImageView();
+        imageView1.setImage(image1);
+        slides.add(imageView1);
 
         Image image2 = new Image("2.png");
-        slides.add(image2);
+        ImageView imageView2 = new ImageView();
+        imageView1.setImage(image2);
+        slides.add(imageView2);
 
-        Image image3 = new Image("3.png");;
-        slides.add(image3);
+        Image image3 = new Image("3.png");
+        ImageView imageView3 = new ImageView();
+        imageView1.setImage(image3);
+        slides.add(imageView3);
 
         Image image4 = new Image("4.png");
-        slides.add(image4);
+        ImageView imageView4 = new ImageView();
+        imageView1.setImage(image4);
+        slides.add(imageView4);
 
     }
 
