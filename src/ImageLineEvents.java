@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Main extends Application {
+public class ImageLineEvents extends Application {
 
 
     public static void main(String[] args){
@@ -45,33 +45,9 @@ public class Main extends Application {
         borderPane.setCenter(slideshowImageView);
 
 
-        //then the working logic in my eventhandler
-        Task task = new Task<Void>() {
-            @Override
-            public Void call() throws Exception {
-                for (int i = 0; i < imageArrayList.size(); i++) {
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            slideshowImageView.setImage(imageArrayList.get(slideshowCount));
-                            slideshowCount++;
-                            System.out.println(slideshowCount);
-                            if (slideshowCount >= imageArrayList.size()) {
-                                slideshowCount = 0;
-                                System.out.println(slideshowCount);
-                            }
-                        }
-                    });
 
-                    Thread.sleep(2000);
+        showImages();
 
-                }
-                return null;
-            }
-        };
-        Thread th = new Thread(task);
-        th.setDaemon(true);
-        th.start();
 
 
 
@@ -104,6 +80,39 @@ public class Main extends Application {
         Image image4 = new Image("4.png");
         imageArrayList.add(image4);
 
+    }
+
+    public void showImages(){
+        //then the working logic in my eventhandler
+        Task task = new Task<Void>() {
+            @Override
+            public Void call() throws Exception {
+                for (int i = 0; i < imageArrayList.size(); i++) {
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            slideshowImageView.setImage(imageArrayList.get(slideshowCount));
+                            slideshowCount++;
+                            System.out.println(slideshowCount);
+
+                            if (slideshowCount >= imageArrayList.size()) {
+                                slideshowCount = 0;
+                                System.out.println(slideshowCount);
+                                showImages();
+
+                            }
+                        }
+                    });
+
+                    Thread.sleep(2000);
+
+                }
+                return null;
+            }
+        };
+        Thread th = new Thread(task);
+        th.setDaemon(true);
+        th.start();
     }
 
 
