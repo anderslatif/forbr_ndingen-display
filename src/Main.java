@@ -4,6 +4,7 @@ import javafx.concurrent.Task;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
