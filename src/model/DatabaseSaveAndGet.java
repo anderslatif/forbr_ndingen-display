@@ -38,10 +38,10 @@ public class DatabaseSaveAndGet {
 
                 while(resultSet.next()){
 
-                    String date = resultSet.getString("date");
+                    String date = resultSet.getString("slide_date");
                     String slideType = resultSet.getString("slide_type");
                     String header = resultSet.getString("header");
-                    String text = resultSet.getString("text");
+                    String text = resultSet.getString("slide_text");
                     String imagePath = resultSet.getString("image_path");
 
 
