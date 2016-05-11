@@ -1,0 +1,20 @@
+.eventSlide{
+
+    -fx-background-image: url("background.png");
+    -fx-background-size: stretch;
+}
+
+
+.happyHourSlide{
+
+    -fx-background-image: url("background.png");
+    -fx-background-size: stretch;
+}
+
+.header{
+    -fx-font-size: 24px;
+}
+
+.text_area{
+    -fx-font-size: 18px;
+}

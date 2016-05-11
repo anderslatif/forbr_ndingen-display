@@ -1,10 +1,13 @@
 package model;
 
+import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 import java.io.File;
 import java.sql.*;
@@ -19,7 +22,7 @@ public class DatabaseSaveAndGet {
 
 
 
-    public static ArrayList<Node> loadAllSlides(){
+    public static ArrayList<Node> loadAllSlides(Scene scene){
 
         Connection connection = null;
         Statement statement = null;
@@ -32,13 +35,14 @@ public class DatabaseSaveAndGet {
 
             statement = connection.createStatement();
 
-            resultSet = statement.executeQuery("SELECT * FROM events;");
+            LocalDate localDate = LocalDate.now();
+
+            resultSet = statement.executeQuery("SELECT * FROM slides WHERE slide_date = '" + localDate + "';");
 
             if(connection != null){
 
                 while(resultSet.next()){
 
-                    String date = resultSet.getString("slide_date");
                     String slideType = resultSet.getString("slide_type");
                     String header = resultSet.getString("header");
                     String text = resultSet.getString("slide_text");
@@ -47,35 +51,99 @@ public class DatabaseSaveAndGet {
 
 
                     switch (slideType){
-                        case "pictureSlide":
-                            Image image = new Image(imagePath);
-                            ImageView imageView = new ImageView(image);
-                            slides.add(imageView);
-                            break;
-                        case "happyHour":
-                            VBox vBox = new VBox();
-                            Label headerLabel = new Label(header);
-                            Image image1 = new Image(imagePath);
+                        case "SlideEvent":
+                            VBox vBox1 = new VBox();
+                            vBox1.getStyleClass().add("eventSlide");
+
+                            Label headerLabel1;
+                            if(header.equals("null")){
+                                headerLabel1 = new Label();
+                            } else {
+                                headerLabel1 = new Label(header);
+                            }
+                            headerLabel1.getStyleClass().add("header");
+                            headerLabel1.setTextFill(Color.WHITE);
+                            headerLabel1.setAlignment(Pos.CENTER);
+
+                            Image image1;
+                            if(imagePath.equals("") || imagePath.equals("null") || imagePath == null){
+                                image1 = new Image("Empty.png");
+                            } else {
+                                image1 = new Image(imagePath);
+                            }
                             ImageView imageView1 = new ImageView(image1);
-                            Label textLabel = new Label(text);
-                            vBox.getChildren().addAll(headerLabel, imageView1, textLabel);
-                            slides.add(vBox);
+                            imageView1.fitWidthProperty().bind(scene.widthProperty());
+
+                            Label textLabel1;
+                            if(text.equals("null")){
+                                textLabel1 = new Label();
+                            } else {
+                                textLabel1 = new Label(text);
+                            }
+                            textLabel1.getStyleClass().add("text_area");
+                            textLabel1.setTextFill(Color.WHITE);
+                            textLabel1.setAlignment(Pos.CENTER);
+
+
+                            vBox1.getChildren().addAll(headerLabel1, imageView1, textLabel1);
+                            slides.add(vBox1);
                             break;
-                        case "event":
-                            VBox vBox2 = new VBox();
-                            Label headerLabel2 = new Label(header);
-                            Image image2 = new Image(imagePath);
+
+                        case "SlidePicture":
+
+                            Image image2;
+                            if(imagePath.equals("") || imagePath.equals("null") || imagePath == null){
+                                image2 = new Image("Empty.png");
+                            } else {
+                                image2 = new Image(imagePath);
+                            }
                             ImageView imageView2 = new ImageView(image2);
-                            Label textLabel2 = new Label(text);
-                            vBox2.getChildren().addAll(headerLabel2, imageView2, textLabel2);
+                            imageView2.fitHeightProperty().bind(scene.heightProperty());
+                            imageView2.fitWidthProperty().bind(scene.widthProperty());
+                            slides.add(imageView2);
+                            break;
+
+                        case "SlideHappyHour":
+                            VBox vBox2 = new VBox();
+                            vBox2.getStyleClass().add("happyHourSlide");
+
+                            Label headerLabel3;
+                            if(header.equals("null")){
+                                headerLabel3 = new Label();
+                            } else {
+                                headerLabel3 = new Label(header);
+                            }
+                            headerLabel3.getStyleClass().add("header");
+                            headerLabel3.setTextFill(Color.WHITE);
+                            headerLabel3.setAlignment(Pos.CENTER);
+
+                            Image image3;
+                            if(imagePath.equals("") || imagePath.equals("null") || imagePath == null){
+                                image3 = new Image("Empty.png");
+                            } else {
+                                image3 = new Image(imagePath);
+                            }
+                            ImageView imageView3 = new ImageView(image3);
+                            imageView3.fitWidthProperty().bind(scene.widthProperty());
+
+                            Label textLabel3;
+                            if(text.equals("null")){
+                                textLabel3 = new Label();
+                            } else {
+                                textLabel3 = new Label(text);
+                            }
+                            textLabel3.getStyleClass().add("text_area");
+                            textLabel3.setTextFill(Color.WHITE);
+                            textLabel3.setAlignment(Pos.CENTER);
+
+                            vBox2.getChildren().addAll(headerLabel3, imageView3, textLabel3);
                             slides.add(vBox2);
                             break;
+
                         default:
-                            System.out.println("This slide has not been recognized and has not been added to the presentation.");
+                            System.out.println("A slide has not been recognized and has not been added to the presentation.");
 
                     }
-
-
 
 
 
