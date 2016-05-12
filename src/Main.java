@@ -75,7 +75,6 @@ public class Main extends Application {
 
 
     public void showPresentation(){
-        //then the working logic in my eventhandler
         Task task = new Task<Void>() {
             @Override
             public Void call() throws Exception {
@@ -102,9 +101,9 @@ public class Main extends Application {
                 return null;
             }
         };
-        Thread th = new Thread(task);
-        th.setDaemon(true);
-        th.start();
+        Thread thread = new Thread(task);
+        thread.setDaemon(true);
+        thread.start();
     }
 
 
