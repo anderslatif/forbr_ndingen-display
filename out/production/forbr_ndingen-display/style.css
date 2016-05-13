@@ -1,3 +1,15 @@
+@font-face {
+    font-family: Contribute;
+    src: url('fonts/Contribute_Bold.otf');
+}
+
+
+.root{
+
+    -fx-font-family: 'Contribute';
+}
+
+
 .eventSlide{
 
     -fx-background-image: url("background.png");

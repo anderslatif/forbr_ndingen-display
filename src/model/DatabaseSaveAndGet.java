@@ -3,6 +3,7 @@ package model;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -43,6 +44,7 @@ public class DatabaseSaveAndGet {
 
                 while(resultSet.next()){
 
+                    String startTime = resultSet.getString("start_time");
                     String slideType = resultSet.getString("slide_type");
                     String header = resultSet.getString("header");
                     String text = resultSet.getString("slide_text");
@@ -63,7 +65,17 @@ public class DatabaseSaveAndGet {
                             }
                             headerLabel1.getStyleClass().add("header");
                             headerLabel1.setTextFill(Color.WHITE);
+                            headerLabel1.setMaxWidth(Double.MAX_VALUE);
                             headerLabel1.setAlignment(Pos.CENTER);
+
+                            Label startTimeLabel;
+                            if(startTime.equals("null")){
+                                startTimeLabel = new Label();
+                            } else {
+                                startTimeLabel = new Label(startTime);
+                            }
+                            startTimeLabel.getStyleClass().add("header");
+                            startTimeLabel.setTextFill(Color.WHITE);
 
                             Image image1;
                             if(imagePath.equals("") || imagePath.equals("null") || imagePath == null){
@@ -82,10 +94,10 @@ public class DatabaseSaveAndGet {
                             }
                             textLabel1.getStyleClass().add("text_area");
                             textLabel1.setTextFill(Color.WHITE);
+                            textLabel1.setMaxWidth(Double.MAX_VALUE);
                             textLabel1.setAlignment(Pos.CENTER);
 
-
-                            vBox1.getChildren().addAll(headerLabel1, imageView1, textLabel1);
+                            vBox1.getChildren().addAll(headerLabel1, startTimeLabel, imageView1, textLabel1);
                             slides.add(vBox1);
                             break;
 
@@ -115,6 +127,7 @@ public class DatabaseSaveAndGet {
                             }
                             headerLabel3.getStyleClass().add("header");
                             headerLabel3.setTextFill(Color.WHITE);
+                            headerLabel3.setMaxWidth(Double.MAX_VALUE);
                             headerLabel3.setAlignment(Pos.CENTER);
 
                             Image image3;
@@ -134,6 +147,7 @@ public class DatabaseSaveAndGet {
                             }
                             textLabel3.getStyleClass().add("text_area");
                             textLabel3.setTextFill(Color.WHITE);
+                            textLabel3.setMaxWidth(Double.MAX_VALUE);
                             textLabel3.setAlignment(Pos.CENTER);
 
                             vBox2.getChildren().addAll(headerLabel3, imageView3, textLabel3);
