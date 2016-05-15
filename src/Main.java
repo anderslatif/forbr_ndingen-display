@@ -7,6 +7,7 @@ import javafx.concurrent.Task;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.animation.AnimationTimer;
@@ -50,6 +51,8 @@ public class Main extends Application {
         Scene scene = new Scene(borderPane, 400, 600);
 
 
+
+
         presentation = DatabaseSaveAndGet.loadAllSlides(scene);
 
         Node dummyNode = new StackPane();
@@ -58,6 +61,34 @@ public class Main extends Application {
 
         showPresentation();
 
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                switch(event.getCode()){
+                    case UP:
+                        changeSecondsPerSlide(10);
+                        break;
+                    case DOWN:
+                        changeSecondsPerSlide(-10);
+                        break;
+                    case RIGHT:
+                        changeSecondsPerSlide(1);
+                        break;
+                    case LEFT:
+                        changeSecondsPerSlide(-1);
+                        break;
+
+                    case VOLUME_UP:
+                        changeSecondsPerSlide(1);
+                        break;
+                    case VOLUME_DOWN:
+                        changeSecondsPerSlide(1);
+
+                    default:
+                        System.out.println("Couldn't change how long to display the slides");
+                }
+            }
+        });
 
         scene.getStylesheets().addAll(this.getClass().getResource("style.css").toExternalForm());
         borderPane.setOnMouseClicked( e -> primaryStage.close());
@@ -68,7 +99,12 @@ public class Main extends Application {
     }
 
 
-
+    public void changeSecondsPerSlide(int value){
+        if((secondsPerSlide + value) > 0){
+            this.secondsPerSlide = secondsPerSlide + value;
+            System.out.println("Seconds Per Slide: " + secondsPerSlide);
+        }
+    }
 
 
 
