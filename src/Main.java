@@ -1,6 +1,7 @@
 /**
  * Created by Anders on 5/2/2016.
  */
+import controller.Controller;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -48,18 +49,18 @@ public class Main extends Application {
 
         borderPane = new BorderPane();
 
-        Scene scene = new Scene(borderPane, 400, 600);
+        Scene scene = new Scene(borderPane/*, 400, 600*/);
 
 
 
 
-        presentation = DatabaseSaveAndGet.loadAllSlides(scene);
+        //presentation = DatabaseSaveAndGet.loadAllSlides(scene);
 
         Node dummyNode = new StackPane();
-        presentation.add(dummyNode);
+        //presentation.add(dummyNode);
 
 
-        showPresentation();
+        //showPresentation();
 
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
@@ -90,12 +91,15 @@ public class Main extends Application {
             }
         });
 
+
+        borderPane.setCenter(Controller.getTwitterGrid());
+        //primaryStage.setMaximized(true);
+
         scene.getStylesheets().addAll(this.getClass().getResource("style.css").toExternalForm());
         borderPane.setOnMouseClicked( e -> primaryStage.close());
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setScene(scene);
         primaryStage.show();
-
     }
 
 
@@ -118,13 +122,18 @@ public class Main extends Application {
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run() {
-                            borderPane.setCenter(presentation.get(slideshowCount));
-                            slideshowCount++;
-                            System.out.println(slideshowCount);
+                            if(presentation.get(slideshowCount) instanceof javafx.scene.layout.GridPane){
+                                borderPane.setCenter(Controller.getTwitterGrid());
+                                slideshowCount++;
+                            } else {
+                                borderPane.setCenter(presentation.get(slideshowCount));
+                                slideshowCount++;
+                                //System.out.println(slideshowCount);
+                            }
 
                             if (slideshowCount >= presentation.size()) {
                                 slideshowCount = 0;
-                                System.out.println(slideshowCount);
+                                //System.out.println(slideshowCount);
                                 showPresentation();
 
                             }

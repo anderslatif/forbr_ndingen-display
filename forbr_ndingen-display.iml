@@ -19,5 +19,6 @@
         <jarDirectory url="file://$MODULE_DIR$/mysql-connector-java-5.1.38" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="com.github.mike10004:twitter4j-core:4.0.4p1" level="project" />
   </component>
 </module>

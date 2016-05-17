@@ -30,3 +30,13 @@
 .text_area{
     -fx-font-size: 18px;
 }
+
+
+.twitter_user {
+    -fx-font-size: 12px;
+    -fx-text-alignment: center;
+}
+
+.twitter_message {
+    -fx-font-size: 18px;
+}

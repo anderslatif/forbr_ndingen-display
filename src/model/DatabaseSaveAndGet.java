@@ -7,6 +7,8 @@ import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
@@ -154,9 +156,17 @@ public class DatabaseSaveAndGet {
                             slides.add(vBox2);
                             break;
 
+                        case "Twitter":
+
+                            System.out.println("hello");
+                            GridPane gridPane = new GridPane();
+
+                            slides.add(gridPane);
+
+
+
                         default:
                             System.out.println("A slide has not been recognized and has not been added to the presentation.");
-
                     }
 
 
