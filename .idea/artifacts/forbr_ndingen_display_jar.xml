@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="forbr_ndingen-display:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/forbr_ndingen_display_jar</output-path>
+    <root id="archive" name="forbr_ndingen-display.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/out/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="forbr_ndingen-display" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/mysql-connector-java-5.1.38/mysql-connector-java-5.1.38-bin.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/github/mike10004/twitter4j-core/4.0.4p1/twitter4j-core-4.0.4p1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

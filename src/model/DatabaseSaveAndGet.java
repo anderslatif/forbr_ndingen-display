@@ -156,9 +156,9 @@ public class DatabaseSaveAndGet {
                             slides.add(vBox2);
                             break;
 
-                        case "Twitter":
+                        case "Instagram":
 
-                            System.out.println("hello");
+                            System.out.println("My name is Instagram slide.");
                             GridPane gridPane = new GridPane();
 
                             slides.add(gridPane);

@@ -1,36 +1,24 @@
 /**
  * Created by Anders on 5/2/2016.
  */
+import model.DatabaseSaveAndGet;
+
 import controller.Controller;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.scene.Node;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import javafx.animation.AnimationTimer;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.effect.Lighting;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.text.Text;
 import javafx.stage.StageStyle;
-import javafx.util.Duration;
-import model.DatabaseSaveAndGet;
+
 
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
+
 
 public class Main extends Application {
 
@@ -49,18 +37,18 @@ public class Main extends Application {
 
         borderPane = new BorderPane();
 
-        Scene scene = new Scene(borderPane/*, 400, 600*/);
+        Scene scene = new Scene(borderPane);
 
 
 
 
-        //presentation = DatabaseSaveAndGet.loadAllSlides(scene);
+        presentation = DatabaseSaveAndGet.loadAllSlides(scene);
 
         Node dummyNode = new StackPane();
-        //presentation.add(dummyNode);
+        presentation.add(dummyNode);
 
 
-        //showPresentation();
+        showPresentation();
 
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
@@ -92,7 +80,8 @@ public class Main extends Application {
         });
 
 
-        borderPane.setCenter(Controller.getTwitterGrid());
+
+        //borderPane.setCenter(Controller.getInstagramGrid());
         //primaryStage.setMaximized(true);
 
         scene.getStylesheets().addAll(this.getClass().getResource("style.css").toExternalForm());
@@ -123,7 +112,7 @@ public class Main extends Application {
                         @Override
                         public void run() {
                             if(presentation.get(slideshowCount) instanceof javafx.scene.layout.GridPane){
-                                borderPane.setCenter(Controller.getTwitterGrid());
+                                borderPane.setCenter(Controller.getInstagramGrid());
                                 slideshowCount++;
                             } else {
                                 borderPane.setCenter(presentation.get(slideshowCount));
