@@ -3,7 +3,6 @@ package controller;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import twitter4j.Status;
 
 import java.util.List;
 

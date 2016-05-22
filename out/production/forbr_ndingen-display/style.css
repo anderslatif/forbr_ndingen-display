@@ -11,32 +11,28 @@
 
 
 .eventSlide{
-
     -fx-background-image: url("background.png");
-    -fx-background-size: stretch;
+    -fx-background-size: contain;
 }
 
 
 .happyHourSlide{
-
     -fx-background-image: url("background.png");
-    -fx-background-size: stretch;
+    -fx-background-size: contain;
 }
 
 .header{
     -fx-font-size: 24px;
+    -fx-padding: 40 0 10 0;
 }
 
 .text_area{
     -fx-font-size: 18px;
+    -fx-text-fill: white;
 }
 
-
-.twitter_user {
-    -fx-font-size: 12px;
-    -fx-text-alignment: center;
-}
-
-.twitter_message {
-    -fx-font-size: 18px;
+.text-area, .text-area .viewport, .text-area .content {
+    -fx-font-size: 24px;
+    -fx-background-color: black;
+    -fx-padding: 20 10 0 10;
 }

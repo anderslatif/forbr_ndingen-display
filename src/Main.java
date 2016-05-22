@@ -1,7 +1,7 @@
 /**
  * Created by Anders on 5/2/2016.
  */
-import model.DatabaseSaveAndGet;
+import model.DatabaseGet;
 
 import controller.Controller;
 import javafx.application.Application;
@@ -42,7 +42,7 @@ public class Main extends Application {
 
 
 
-        presentation = DatabaseSaveAndGet.loadAllSlides(scene);
+        presentation = DatabaseGet.loadAllSlides(scene);
 
         Node dummyNode = new StackPane();
         presentation.add(dummyNode);
@@ -74,15 +74,14 @@ public class Main extends Application {
                         changeSecondsPerSlide(1);
 
                     default:
-                        System.out.println("Couldn't change how long to display the slides");
+                        //System.out.println("Couldn't change how long to display the slides");
                 }
             }
         });
 
+        // -fx-rotate: -90;
 
-
-        //borderPane.setCenter(Controller.getInstagramGrid());
-        //primaryStage.setMaximized(true);
+        primaryStage.setMaximized(true);
 
         scene.getStylesheets().addAll(this.getClass().getResource("style.css").toExternalForm());
         borderPane.setOnMouseClicked( e -> primaryStage.close());

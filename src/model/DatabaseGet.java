@@ -5,8 +5,10 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -20,7 +22,7 @@ import java.util.ArrayList;
 /**
  * Created by Anders on 4/21/2016.
  */
-public class DatabaseSaveAndGet {
+public class DatabaseGet {
 
 
 
@@ -88,16 +90,19 @@ public class DatabaseSaveAndGet {
                             ImageView imageView1 = new ImageView(image1);
                             imageView1.fitWidthProperty().bind(scene.widthProperty());
 
-                            Label textLabel1;
+                            TextArea textLabel1;
                             if(text.equals("null")){
-                                textLabel1 = new Label();
+                                textLabel1 = new TextArea();
                             } else {
-                                textLabel1 = new Label(text);
+                                textLabel1 = new TextArea(text);
                             }
+                            textLabel1.setWrapText(true);
+                            textLabel1.setEditable(false);
                             textLabel1.getStyleClass().add("text_area");
-                            textLabel1.setTextFill(Color.WHITE);
                             textLabel1.setMaxWidth(Double.MAX_VALUE);
-                            textLabel1.setAlignment(Pos.CENTER);
+                            //textLabel1.setMinHeight(Double.MIN_VALUE);
+                            textLabel1.snappedBottomInset();
+                            //textLabel1.setAlignment(Pos.CENTER);
 
                             vBox1.getChildren().addAll(headerLabel1, startTimeLabel, imageView1, textLabel1);
                             slides.add(vBox1);
