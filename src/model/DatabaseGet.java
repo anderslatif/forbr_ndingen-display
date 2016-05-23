@@ -55,7 +55,6 @@ public class DatabaseGet {
                     String imagePath = resultSet.getString("image_path");
 
 
-
                     switch (slideType){
                         case "SlideEvent":
                             VBox vBox1 = new VBox();

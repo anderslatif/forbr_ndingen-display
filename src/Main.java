@@ -3,7 +3,6 @@
  */
 import model.DatabaseGet;
 
-import controller.Controller;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -27,10 +26,10 @@ public class Main extends Application {
         launch(args);
     }
 
-    ArrayList<Node> presentation;
-    int slideshowCount = 0;
-    BorderPane borderPane;
-    int secondsPerSlide = 2;
+    private ArrayList<Node> presentation;
+    private int slideshowCount = 0;
+    private BorderPane borderPane;
+    private int secondsPerSlide = 2;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -91,7 +90,7 @@ public class Main extends Application {
     }
 
 
-    public void changeSecondsPerSlide(int value){
+    private void changeSecondsPerSlide(int value){
         if((secondsPerSlide + value) > 0){
             this.secondsPerSlide = secondsPerSlide + value;
             System.out.println("Seconds Per Slide: " + secondsPerSlide);
@@ -102,7 +101,7 @@ public class Main extends Application {
 
 
 
-    public void showPresentation(){
+    private void showPresentation(){
         Task task = new Task<Void>() {
             @Override
             public Void call() throws Exception {
@@ -110,18 +109,11 @@ public class Main extends Application {
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run() {
-                            if(presentation.get(slideshowCount) instanceof javafx.scene.layout.GridPane){
-                                borderPane.setCenter(Controller.getInstagramGrid());
-                                slideshowCount++;
-                            } else {
-                                borderPane.setCenter(presentation.get(slideshowCount));
-                                slideshowCount++;
-                                //System.out.println(slideshowCount);
-                            }
+                            borderPane.setCenter(presentation.get(slideshowCount));
+                            slideshowCount++;
 
                             if (slideshowCount >= presentation.size()) {
                                 slideshowCount = 0;
-                                //System.out.println(slideshowCount);
                                 showPresentation();
 
                             }
