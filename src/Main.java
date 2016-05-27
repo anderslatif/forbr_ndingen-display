@@ -1,6 +1,8 @@
 /**
  * Created by Anders on 5/2/2016.
  */
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import model.DatabaseGet;
 
 import javafx.application.Application;
@@ -29,7 +31,7 @@ public class Main extends Application {
     private ArrayList<Node> presentation;
     private int slideshowCount = 0;
     private BorderPane borderPane;
-    private int secondsPerSlide = 2;
+    private int secondsPerSlide = 6;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -38,10 +40,8 @@ public class Main extends Application {
 
         Scene scene = new Scene(borderPane);
 
-
-
-
         presentation = DatabaseGet.loadAllSlides(scene);
+
 
         Node dummyNode = new StackPane();
         presentation.add(dummyNode);
@@ -83,7 +83,7 @@ public class Main extends Application {
         primaryStage.setMaximized(true);
 
         scene.getStylesheets().addAll(this.getClass().getResource("style.css").toExternalForm());
-        borderPane.setOnMouseClicked( e -> primaryStage.close());
+        borderPane.setOnMouseClicked( e -> Platform.exit());
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setScene(scene);
         primaryStage.show();

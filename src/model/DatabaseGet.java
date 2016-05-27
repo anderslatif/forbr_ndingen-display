@@ -1,5 +1,6 @@
 package model;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -66,7 +67,7 @@ public class DatabaseGet {
                             } else {
                                 headerLabel1 = new Label(header);
                             }
-                            headerLabel1.getStyleClass().add("header");
+                            headerLabel1.getStyleClass().add("Event_header");
                             headerLabel1.setTextFill(Color.WHITE);
                             headerLabel1.setMaxWidth(Double.MAX_VALUE);
                             headerLabel1.setAlignment(Pos.CENTER);
@@ -77,7 +78,7 @@ public class DatabaseGet {
                             } else {
                                 startTimeLabel = new Label(startTime);
                             }
-                            startTimeLabel.getStyleClass().add("header");
+                            startTimeLabel.getStyleClass().add("Event_startTime");
                             startTimeLabel.setTextFill(Color.WHITE);
 
                             Image image1;
@@ -88,6 +89,7 @@ public class DatabaseGet {
                             }
                             ImageView imageView1 = new ImageView(image1);
                             imageView1.fitWidthProperty().bind(scene.widthProperty());
+                            imageView1.fitHeightProperty().bind(scene.heightProperty().divide(3));
 
                             TextArea textLabel1;
                             if(text.equals("null")){
@@ -97,7 +99,7 @@ public class DatabaseGet {
                             }
                             textLabel1.setWrapText(true);
                             textLabel1.setEditable(false);
-                            textLabel1.getStyleClass().add("text_area");
+                            textLabel1.getStyleClass().add("Event_text_area");
                             textLabel1.setMaxWidth(Double.MAX_VALUE);
                             //textLabel1.setMinHeight(Double.MIN_VALUE);
                             textLabel1.snappedBottomInset();
@@ -131,7 +133,7 @@ public class DatabaseGet {
                             } else {
                                 headerLabel3 = new Label(header);
                             }
-                            headerLabel3.getStyleClass().add("header");
+                            headerLabel3.getStyleClass().add("Bar_header");
                             headerLabel3.setTextFill(Color.WHITE);
                             headerLabel3.setMaxWidth(Double.MAX_VALUE);
                             headerLabel3.setAlignment(Pos.CENTER);
@@ -144,6 +146,8 @@ public class DatabaseGet {
                             }
                             ImageView imageView3 = new ImageView(image3);
                             imageView3.fitWidthProperty().bind(scene.widthProperty());
+                            imageView3.fitHeightProperty().bind(scene.heightProperty().divide(3));
+
 
                             Label textLabel3;
                             if(text.equals("null")){
@@ -151,7 +155,7 @@ public class DatabaseGet {
                             } else {
                                 textLabel3 = new Label(text);
                             }
-                            textLabel3.getStyleClass().add("text_area");
+                            textLabel3.getStyleClass().add("Bar_text_area");
                             textLabel3.setTextFill(Color.WHITE);
                             textLabel3.setMaxWidth(Double.MAX_VALUE);
                             textLabel3.setAlignment(Pos.CENTER);
@@ -159,14 +163,6 @@ public class DatabaseGet {
                             vBox2.getChildren().addAll(headerLabel3, imageView3, textLabel3);
                             slides.add(vBox2);
                             break;
-
-                        case "Instagram":
-
-                            System.out.println("My name is Instagram slide.");
-                            GridPane gridPane = new GridPane();
-
-                            slides.add(gridPane);
-
 
 
                         default:

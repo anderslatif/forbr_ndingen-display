@@ -12,27 +12,44 @@
 
 .eventSlide{
     -fx-background-image: url("background.png");
-    -fx-background-size: contain;
+    -fx-background-size: stretch;
 }
 
 
 .happyHourSlide{
     -fx-background-image: url("background.png");
-    -fx-background-size: contain;
+    -fx-background-size: stretch;
 }
 
-.header{
-    -fx-font-size: 24px;
+.Event_header{
+    -fx-font-size: 30px;
     -fx-padding: 40 0 10 0;
 }
 
-.text_area{
-    -fx-font-size: 18px;
+.Event_startTime{
+    -fx-font-size: 30px;
+    -fx-padding: 20 0 10 10;
+}
+
+.Event_text_area{
+    -fx-font-size: 30px;
     -fx-text-fill: white;
 }
 
+.Bar_header{
+    -fx-font-size: 40px;
+    -fx-padding: 60 0 50 0;
+}
+
+.Bar_text_area{
+    -fx-font-size: 40px;
+    -fx-text-fill: white;
+    -fx-padding: 80 0 30 0;
+}
+
+
 .text-area, .text-area .viewport, .text-area .content {
-    -fx-font-size: 24px;
-    -fx-background-color: black;
+    -fx-font-size: 30px;
+    -fx-background-color: transparent;
     -fx-padding: 20 10 0 10;
 }
