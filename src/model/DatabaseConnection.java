@@ -8,6 +8,11 @@ import java.sql.DriverManager;
  */
 public class DatabaseConnection {
 
+    /**
+     * Create connection shortly to get slide information and shut down afterwards.
+     * Works both locally and on the Raspberry pi if these configurations are used.
+     * @return
+     */
     public static Connection getConnection(){
         Connection connection = null;
 

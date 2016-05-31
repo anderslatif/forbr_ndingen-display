@@ -26,8 +26,12 @@ import java.util.ArrayList;
 public class DatabaseGet {
 
 
-
-
+    /**
+     * This method is responsible for loading all slides in the database from today's date.
+     * The information and images are constructed and the main node is added to an ArrayList.
+     * @param scene
+     * @return
+     */
     public static ArrayList<Node> loadAllSlides(Scene scene){
 
         Connection connection = null;

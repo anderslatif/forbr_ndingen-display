@@ -49,6 +49,10 @@ public class Main extends Application {
 
         showPresentation();
 
+        /**
+         * Gives the functionality to change the amount of seconds per slide with keyboard.
+         * Mainly used while debugging.
+         */
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -78,7 +82,7 @@ public class Main extends Application {
             }
         });
 
-        // -fx-rotate: -90;
+
 
         primaryStage.setMaximized(true);
 
@@ -89,7 +93,10 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-
+    /**
+     * This is the method that allows to dynamically change how many seconds a slide is shown.
+     * @param value
+     */
     private void changeSecondsPerSlide(int value){
         if((secondsPerSlide + value) > 0){
             this.secondsPerSlide = secondsPerSlide + value;
@@ -98,9 +105,9 @@ public class Main extends Application {
     }
 
 
-
-
-
+    /**
+     * Each node is displayed and when we reach the last slide we begin over.
+     */
     private void showPresentation(){
         Task task = new Task<Void>() {
             @Override
